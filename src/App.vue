@@ -11,64 +11,57 @@
       </nav>
     </header>
     <main>
-      <section class="carousel">
-        <!-- 这里可以使用第三方库如 Vue-Carousel-3D 或者任何其他轮播图插件 -->
-        <div class="carousel-item active">
-          <img src="https://via.placeholder.com/800x400" alt="Slide 1">
-          <p>Caption for slide 1</p>
-        </div>
-        <div class="carousel-item">
-          <img src="https://via.placeholder.com/800x400" alt="Slide 2">
-          <p>Caption for slide 2</p>
-        </div>
-        <!-- 更多的轮播项... -->
-      </section>
-      <section class="features">
-        <div class="feature">
-          <h2>Feature 1</h2>
-          <p>Description of feature 1.</p>
-        </div>
-        <div class="feature">
-          <h2>Feature 2</h2>
-          <p>Description of feature 2.</p>
-        </div>
-        <!-- 更多的特色项... -->
-      </section>
+      <!-- 主要内容 -->
+      <div class="content">
+        <h1>Welcome to My Vue App</h1>
+        <p>This is a simple homepage with a carousel and features section.</p>
+      </div>
     </main>
-    <footer>
-      <p>&copy; 2024 My Vue App. All rights reserved.</p>
+    <footer class="footer">
+      <p>© 2024 My Vue App. All rights reserved.</p>
     </footer>
   </div>
 </template>
 
+<script>
+export default {
+  name: 'App'
+};
+</script>
+
 <style>
-#app {
-  text-align: center;
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* 重置一些基本元素的样式 */
+body, h1, p {
+  margin: 0;
+  padding: 0;
 }
 
+/* 设置整体字体 */
+body {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+/* 导航栏样式 */
 .navbar {
   background-color: #333;
   overflow: hidden;
 }
 
 .navbar ul {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  justify-content: center;
 }
 
 .navbar ul li {
-  float: left;
+  padding: 14px 16px;
 }
 
 .navbar ul li a {
-  display: block;
   color: white;
-  text-align: center;
-  padding: 14px 16px;
   text-decoration: none;
 }
 
@@ -77,47 +70,34 @@
   color: black;
 }
 
-.carousel {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-}
-
-.carousel-item {
-  position: absolute;
-  width: 100%;
-  display: none;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-.carousel-item.active {
-  display: block;
-}
-
-@keyframes fade {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.features {
-  display: flex;
-  justify-content: center;
+/* 主要内容样式 */
+.content {
   padding: 20px;
+  text-align: center; /* 内容居中 */
 }
 
-.feature {
-  flex-basis: 30%;
-  margin: 10px;
-  text-align: center;
-}
-
-footer {
+/* 脚注样式 */
+.footer {
   background-color: #333;
   color: white;
-  padding: 10px;
-  position: absolute;
-  bottom: 0;
+  padding: 10px 0;
+  text-align: center; /* 版权声明居中 */
   width: 100%;
+}
+
+.footer p {
+  margin: 0;
+  padding: 0;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .navbar ul {
+    flex-direction: column;
+  }
+
+  .navbar ul li {
+    padding: 10px 0;
+  }
 }
 </style>
