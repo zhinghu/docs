@@ -1,24 +1,30 @@
+<script setup>
+import HelloWorld from './components/HelloWorld.vue'
+</script>
+
 <template>
-  <div id="app">
-    <header class="navbar">
-      <nav>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
-    <main class="content">
-      <div class="container">
-        <h1>Welcome to My Vue App</h1>
-        <p>This is a simple homepage with a carousel and features section.</p>
-        <!-- Carousel and features section will go here -->
-      </div>
-    </main>
-    <footer class="footer">
-      <p>© 2024 My Vue App. All rights reserved.</p>
-    </footer>
+  <div>
+    <a href="https://vitejs.dev" target="_blank">
+      <img src="/vite.svg" class="logo" alt="Vite logo" />
+    </a>
+    <a href="https://vuejs.org/" target="_blank">
+      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
+    </a>
   </div>
+  <HelloWorld msg="Vite + Vue" />
 </template>
+
+<style scoped>
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.vue:hover {
+  filter: drop-shadow(0 0 2em #42b883aa);
+}
+</style>
