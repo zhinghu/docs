@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
+    "@vue/babel-plugin-jsx": "^1.2.2",
     "vite": "^4.1.0"
   }
 }
