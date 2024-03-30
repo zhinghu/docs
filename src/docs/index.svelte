@@ -5,14 +5,26 @@
 
 <main>
   <TopNavigator />
-  <button
-    on:click={() => {
-      count++;
-    }}>Click me add count</button
-  >
-  <p>count: {count}</p>
   <ul>
-    <li>asdfsdf</li>
-    <li>sdfkdfkjdf</li>
+    <li>docs</li>
   </ul>
 </main>
+
+<style>
+  ul {
+    width: 100vw;
+    height: calc(100vh - 50px);
+    padding: 50px;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    ul {
+      background-color: black;
+      color: white;
+    }
+  }
+</style>

@@ -9,7 +9,7 @@
     document.body.innerHTML = "";
 
     new App.default({
-      target: document.body
+      target: document.body,
     });
   }
 </script>
@@ -26,14 +26,20 @@
     </li>
     <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
     <li
-      on:mouseup={(e) => {
+      on:mouseup={() => {
         write_paper("/src/docs/index.svelte");
       }}
     >
       docs
     </li>
     <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-    <li>examples</li>
+    <li
+      on:mouseup={() => {
+        write_paper("/src/examples/index.svelte");
+      }}
+    >
+      examples
+    </li>
   </ul>
 </nav>
 
