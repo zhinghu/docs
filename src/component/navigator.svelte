@@ -23,10 +23,10 @@
     jq.default(div).css({
       display: "block",
       position: "fixed",
-      width: "0px",
-      height: "0px",
+      width: 0,
+      height: 0,
       "z-index": "calc(1 / 0)",
-      "background-color": "#333",
+      "background-color": "#fff",
     });
 
     new svelteApp.default({
@@ -35,13 +35,12 @@
 
     elem.appendChild(div);
 
-    const animateSpeed = 10000;
-    jq.default([div, elem]).add("#navigator > ul").add("#navigator").animate(
+    jq.default(div).animate(
       {
         width: window.innerWidth,
         height: window.innerHeight,
       },
-      animateSpeed,
+      1000,
       "easeOutExpo",
     );
   }
@@ -49,13 +48,8 @@
 
 <nav id="navigator">
   <ul>
-    <li
-      on:mouseup={(e) => {
-        create_paper("../App.svelte", e.currentTarget);
-      }}
-    >
-      home
-    </li>
+    <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+    <li on:mouseup={() => {location.href="/"}}>home</li>
     <li>docs</li>
     <li>examples</li>
   </ul>
@@ -69,6 +63,8 @@
     left: 0px;
     width: 100vw;
     height: 50px;
+
+    z-index: calc(1px / 0px);
   }
 
   ul {
