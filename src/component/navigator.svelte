@@ -1,19 +1,31 @@
 <script lang="ts">
   import * as jq from "jquery";
 
-  async function create_paper(svelte_url: string, elem: HTMLElement) {
-    const svelteApp = await import(svelte_url);
+  jq.easing.easeOutExpo = (x: number): number => {
+    return x === 1 ? 1 : 1 - Math.pow(2, -10 * x);
+  };
 
-    if (elem.children.length > 0) {
-      throw Error("elem length > 0");
+  async function create_paper(svelte_url: string, elem: HTMLElement) {
+    if (jq.default(elem).attr("opened") === undefined) {
+      jq.default(elem).attr("opened", "");
+    } else {
+      jq.default(elem).removeAttr("opened");
     }
+
+    const svelteApp = await import(svelte_url);
 
     const div = document.createElement("div");
 
+    jq.default(elem).css({
+      color: "#0000",
+    });
+    jq.default(div).offset(jq.default(elem).offset()!);
     jq.default(div).css({
-      display: "none",
-      width: "100%",
-      height: "100%",
+      display: "block",
+      position: "fixed",
+      width: "0px",
+      height: "0px",
+      "z-index": "calc(1 / 0)",
       "background-color": "#333",
     });
 
@@ -22,6 +34,16 @@
     });
 
     elem.appendChild(div);
+
+    const animateSpeed = 10000;
+    jq.default([div, elem]).add("#navigator > ul").add("#navigator").animate(
+      {
+        width: window.innerWidth,
+        height: window.innerHeight,
+      },
+      animateSpeed,
+      "easeOutExpo",
+    );
   }
 </script>
 

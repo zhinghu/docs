@@ -6,7 +6,7 @@
   <TopNavigator />
   <div id="main">
     <h1>这是用svelte写的文档主页</h1>
-    <p>主要是Vue不适合我, 要不然我肯定用vue</p>
+    <p>主要是Vue不适合我, 要不然我肯定用Vue</p>
   </div>
   <nav id="bottom-navigator">In 2024/3/30. By Github myChinesePYL</nav>
 </main>
