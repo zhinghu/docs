@@ -21,4 +21,10 @@
       <p>© 2024 My Vue App. All rights reserved.</p>
     </footer>
   </div>
+
+  <Test_h1 />
 </template>
+
+<script setup>
+import Test_h1 from "./test.jsx";
+</script>
