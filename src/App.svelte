@@ -30,6 +30,8 @@
     -webkit-user-select: none;
 
     cursor: default;
+
+    z-index: 0;
   }
 
   #main {
@@ -48,6 +50,8 @@
 
     background-color: #fff;
     color: #000;
+
+    z-index: 0;
   }
 
   @media (prefers-color-scheme: dark) {
