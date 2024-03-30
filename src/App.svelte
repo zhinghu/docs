@@ -21,6 +21,12 @@
     justify-content: center;
     align-items: center;
     font-size: 15px;
+
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+
+    cursor: default;
   }
 
   #main {
