@@ -1,25 +1,29 @@
-<script>
+<script lang="ts">
   import Panel from "../../components/panel.svelte";
   import { onMount } from "svelte";
+  let currentSvelte: null | ATypedSvelteComponent = null;
 
   /**
-   * @param elem {HTMLElement} a元素
-   * @param name {string} 例子的名字
-   * @param target {HTMLElement} 挂载的元素
-   * @return {void}
-  */
-  async function writeExampleToA(elem, name, target) {
-    let file = await import(`./example-${name}.svelte`);
-    elem.addEventListener("click", ()=>{
-      new file.default({
+   * @param elem {} a元素
+   * @param id {} 例子的名字
+   * @param target {} 挂载的元素
+   */
+  async function writeExampleToA(elem: Element | HTMLElement, id: string, target: Element | HTMLElement) {
+    if (target === null) return;
+
+    let file = await import("./" + id + ".svelte");
+    elem.addEventListener("click", () => {
+      if (currentSvelte !== null) currentSvelte.$$.desc=true;
+
+      currentSvelte = new file.default({
         target
       });
     });
-  };
+  }
 
   onMount(() => {
-    document.querySelectorAll("#lists-canvas > a").forEach(e => {
-      writeExampleToA(e, e.name, document.querySelector("#example"));
+    document.querySelectorAll("#lists-canvas > a").forEach((e) => {
+      writeExampleToA(e, e.id, document.querySelector("#example")!);
     });
   });
 </script>
@@ -30,40 +34,50 @@
     <ul id="lists-canvas">
       <h2>Canvas</h2>
       <!-- svelte-ignore a11y-invalid-attribute -->
-      <a href="javascript:void(0)" name="pixel-write">像素处理</a>
+      <a href="javascript:void(0)" id="example-pixel-write">像素处理</a>
     </ul>
   </div>
   <div id="example"></div>
 </main>
 
 <style lang="scss">
+  :global(*){
+    overflow: hidden;
+  }
   main{
     display: flex;
-    min-height: calc(100vh - 50px);
-    justify-content: center;
+    justify-content: flex-start;
   }
 
-  a{
+  a {
     color: white;
     text-decoration: none;
     margin-left: 30px;
 
-    &:hover{
+    &:hover {
       text-decoration: underline;
     }
   }
 
   #lists {
     flex-basis: 20%;
-    height: 100vh;
+    min-width: 100px;
+    max-width: calc(20vw - 20px);
+    height: calc(100vh - 50px);
     background-color: #434343;
     font-family: Helvetica, monospace, Arial;
     padding-left: 10px;
-    padding-top: 10px;
+    padding-right: 10px;
+
+    overflow-y: auto;
+    z-index: calc(1/0);
   }
+
   #example {
     flex-basis: 80%;
-    height: 100vh;
+    min-width: calc(100vw - 20vw);
+    max-width: calc(100vw - 80px);
+    height: calc(100vh - 50px);
     background-color: #323232;
   }
 </style>
