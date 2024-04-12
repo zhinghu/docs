@@ -34,7 +34,7 @@
     <ul id="lists-canvas">
       <h2>Canvas</h2>
       <!-- svelte-ignore a11y-invalid-attribute -->
-      <a href="javascript:void(0)" id="example-pixel-write">像素处理</a>
+      <a href="javascript:void(0)" id="example-pixel-write">着色器测试</a>
     </ul>
   </div>
   <div id="example"></div>
@@ -74,6 +74,9 @@
   }
 
   #example {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-basis: 80%;
     min-width: calc(100vw - 20vw);
     max-width: calc(100vw - 80px);
