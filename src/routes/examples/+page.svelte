@@ -1,7 +1,7 @@
 <script lang="ts">
   import Panel from "../../components/panel.svelte";
   import { onMount } from "svelte";
-  let currentSvelte: null | ATypedSvelteComponent = null;
+  let currentSvelte: null | TypedSvelteComponent = null;
 
   /**
    * @param elem {} a元素
@@ -13,7 +13,7 @@
 
     let file = await import("./" + id + ".svelte");
     elem.addEventListener("click", () => {
-      if (currentSvelte !== null) currentSvelte.$$.desc=true;
+      if (currentSvelte !== null) currentSvelte.$destroy();
 
       currentSvelte = new file.default({
         target
