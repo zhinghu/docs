@@ -28,7 +28,9 @@
     // render
     let timed = Date.now();
     let currentTime = Date.now();
+    let fps = 0;
     let fpsed = 0;
+    let currentFps = 0;
     (function render () {
       requestAnimationFrame(render);
 
@@ -46,8 +48,12 @@
       ctx.fillStyle = "#000";
       ctx.fillRect(0,0,img.width,img.height);
 
+      fps = (1000 / (Date.now() - timed));
+      fpsed = (fpsed + fps) / 2;
+
       if (Date.now() - currentTime >= 1000) {
-        fpsed = Date.now() - timed;
+        currentFps = fpsed;
+        fpsed = 0;
         currentTime = Date.now();
       }
 
@@ -55,7 +61,7 @@
 
       ctx.fillStyle = "#fff";
       ctx.font = "20px Arial";
-      ctx.fillText(`FPS: ${fpsed}`, 10, 20);
+      ctx.fillText(`FPS: ${Math.floor(currentFps)}`, 10, 20);
 
       // 渲染到主画布上
       img.src = ctx.canvas.toDataURL();
@@ -63,5 +69,5 @@
   });
 </script>
 
-<img>
+<img alt="" />
 <pre id="error" style="display: none">错误: 您的浏览器不支持Canvas 2D API(也可能是画布太大)</pre>
